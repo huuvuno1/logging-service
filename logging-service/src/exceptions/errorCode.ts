@@ -46,7 +46,7 @@ export const ErrorCodes: { [key: string]: CustomError } = {
   },
   TURN_LOG_NOT_FOUND: {
     CODE: 'TURN_LOG_NOT_FOUND',
-    MESSAGE: 'Cannot find corresponding turn log with the SO number',
+    MESSAGE: 'Cannot find corresponding turn logs with the SO number',
   },
   TURN_ALREADY_PLAYED: {
     CODE: 'TURN_ALREADY_PLAYED',
