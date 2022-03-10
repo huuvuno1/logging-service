@@ -1,0 +1,1 @@
+nơi volume chứa data, khi stop mongo docker không bị mất dữ liệu

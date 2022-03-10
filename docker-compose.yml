@@ -1,1 +1,16 @@
 # update later
+version: '3'
+services:
+  mongodb-log:
+    image: mongo
+    container_name: mongodb-log
+    volumes:
+      - ./mongodb-log:/data/db
+    ports:
+      - 27017:27017
+    networks:
+      - logging-service-2022
+
+networks:
+  logging-service-2022:
+    driver: bridge
