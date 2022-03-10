@@ -1,6 +1,6 @@
 import { Sequelize, Options } from 'sequelize';
-import config from 'config';
-import logger from 'logger';
+import config from '../config';
+import logger from '../logger';
 
 const postgresDb = {} as { sequelize: Sequelize };
 const postgresConfig = config.postgresSQL;

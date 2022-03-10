@@ -1,6 +1,6 @@
 import IORedis, { Redis } from 'ioredis';
-import config from 'config';
-import logger from 'logger';
+import config from '../config';
+import logger from '../logger';
 
 const connection = (): Redis => {
   if (!config.redisHost) {

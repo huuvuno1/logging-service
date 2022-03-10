@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import { connect, connection } from 'mongoose';
-import config from 'config';
-import logger from 'logger';
+import config from '../config';
+import logger from '../logger';
 
 const mongoDBConfig = config.mongodb;
 

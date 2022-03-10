@@ -3,11 +3,11 @@
   "parser": "@typescript-eslint/parser",
   "plugins": [
     "@typescript-eslint",
-    "prettier"
+    "prettier",
+    "prettierrc"
   ],
   "extends": [
-    "airbnb-typescript/base",
-    "plugin:prettier/recommended"
+    "airbnb-typescript/base"
   ],
   "parserOptions": {
     "project": "./tsconfig.json"
@@ -29,14 +29,17 @@
       {
         "selector": "default",
         "format": ["camelCase", "UPPER_CASE", "snake_case", "PascalCase"],
-        "leadingUnderscore": "allow"
+        "leadingUnderscore": "allow",
+        "endOfLine": "auto"
       }
     ],
     "max-len": ["error", { 
       "ignoreComments": true,
       "code": 120,
       "tabWidth": 2,
-      "ignoreStrings": true
+      "ignoreStrings": true,
+      "endOfLine": "auto"
+
       }
     ],
     "operator-linebreak": "off"

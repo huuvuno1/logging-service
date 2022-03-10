@@ -1,4 +1,4 @@
-import config from 'config';
+import config from '../config';
 import connectMongo from './mongo';
 import './redis';
 import connectPostgresDB from './postgres';

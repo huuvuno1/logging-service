@@ -1,5 +1,5 @@
 import { ValidationError } from 'class-validator';
-import { APP_CONSTANTS } from 'utils/constants';
+import { APP_CONSTANTS } from '../utils/constants';
 
 class HttpException extends Error {
   public status: number;

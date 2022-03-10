@@ -2,9 +2,9 @@ import { plainToClass } from 'class-transformer';
 import { validate, ValidationError } from 'class-validator';
 import { Request } from 'express';
 import * as express from 'express';
-import { HttpException } from 'exceptions';
-import { APP_CONSTANTS } from 'utils/constants';
-import { ErrorCodes } from 'exceptions/errorCode';
+import { HttpException } from '../exceptions';
+import { APP_CONSTANTS } from '../utils/constants';
+import { ErrorCodes } from '../exceptions/errorCode';
 
 /**
  * Method to get request validator type based on the parameter.

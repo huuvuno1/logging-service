@@ -1,6 +1,6 @@
 import { NextFunction, Response } from 'express';
-import RequestWithUser from 'utils/rest/request';
-import fmt from 'utils/formatter';
+import RequestWithUser from '../../../utils/rest/request';
+import fmt from '../../../utils/formatter';
 
 const checkHealth = (request: RequestWithUser, response: Response, next: NextFunction) => {
   const data: any = { message: 'Service Up' };

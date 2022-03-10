@@ -1,6 +1,6 @@
 import { Request, NextFunction, Response } from 'express';
-import RequestWithUser from 'utils/rest/request';
-import fmt from 'utils/formatter';
+import RequestWithUser from '../../../utils/rest/request';
+import fmt from '../../../utils/formatter';
 import * as service from './service'
 
 const getLogs = async (request: RequestWithUser, response: Response, next: NextFunction) => {

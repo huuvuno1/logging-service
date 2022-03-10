@@ -4,14 +4,14 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import helmet from 'helmet';
 import noCache from 'nocache';
-import routers from 'api';
+import routers from './api';
 import swaggerUi from 'swagger-ui-express';
 import yaml from 'yamljs';
-import initializeResources from 'resources';
-import { APP_CONSTANTS } from 'utils/constants';
+import initializeResources from './resources';
+import { APP_CONSTANTS } from './utils/constants';
 import logger, { errorLogging, requestLogging } from './logger';
-import config from 'config';
-import { errorMiddleware } from 'middlewares';
+import config from './config';
+import { errorMiddleware } from './middlewares';
 
 const app = express();
 
