@@ -10,7 +10,9 @@ const queryLogs = async (keyword = '', limit = 20, page = 1, service?: any, leve
         "totalData": [
           { 
             "$match": {
-              "message": { $regex: pattern, $options: 'i' }
+              "$and": [
+                {"message": { $regex: pattern, $options: 'i' }}
+              ]
             }
           }, 
           { 
