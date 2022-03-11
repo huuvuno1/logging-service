@@ -4,7 +4,7 @@ import { any } from 'sequelize/types/lib/operators';
 export const DOCUMENT_NAME = 'Log';
 export const COLLECTION_NAME = 'logs';
 
-export const enum LogLevel {
+export enum LogLevel {
   INFO = 'INFO',
   FATAL = 'FATAL',
   ERROR = 'ERROR',
@@ -26,7 +26,7 @@ const schema = new Schema(
     level: {
       type: Schema.Types.String,
       required: true,
-      enum: [LogLevel.DEBUG, LogLevel.ERROR, LogLevel.FATAL, LogLevel.INFO, LogLevel.TRACE, LogLevel.WARN],
+      enum: Object.values(LogLevel),
     },
     message: {
       type: Schema.Types.String,
