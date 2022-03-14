@@ -4,7 +4,7 @@ const APP_CONSTANTS = {
   query: 'query',
   body: 'body',
   file: 'file',
-  service: 'express-template',
+  service: 'loggin-service',
 };
 
 export { APP_CONSTANTS };
