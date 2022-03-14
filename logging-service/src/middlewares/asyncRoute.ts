@@ -6,7 +6,6 @@ export const asyncRouteHandler = (fn: (arg0: RequestWithUser, arg1: Response, ar
     try {
       await fn(req, res, next);
     } catch (error) {
-      console.log((error))
       next(error);
     }
   };

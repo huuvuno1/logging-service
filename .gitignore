@@ -60,3 +60,6 @@ mongodb-log/*.bson
 mongodb-log/WiredTiger*
 mongodb-log/diagnostic.data
 mongodb-log/journal
+
+
+frontend

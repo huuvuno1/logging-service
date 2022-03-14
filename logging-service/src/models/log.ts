@@ -30,12 +30,7 @@ const schema = new Schema(
     },
     message: {
       type: Schema.Types.String,
-      default: true
-    },
-    createdAt: {
-      type: Date,
-      required: true,
-      select: false,
+      default: ''
     },
     timestamp: {
       type: Date,

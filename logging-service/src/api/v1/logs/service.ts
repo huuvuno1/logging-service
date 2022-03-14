@@ -1,4 +1,3 @@
-import { dataText } from "utils/formatter";
 import Log, { LogModel } from "../../../models/log"
 
 const queryLogs = async (data: any) => {
@@ -6,7 +5,7 @@ const queryLogs = async (data: any) => {
   let skip = (+page - 1) * +limit
 
   // keyword: 'not found exception' -> pattern regex: 'not|found|exception'
-  let pattern = keyword.trim().split(' ').filter((item: string) => item.trim() != '').join('|')
+  let pattern = keyword.split(' ').filter((item: string) => item.trim() != '').join('|')
 
   let match = {
     "$and": [
@@ -16,42 +15,31 @@ const queryLogs = async (data: any) => {
     ]
   } as any
 
-  if (time_start) {
-    match.$and.push({"timestamp":{$gte: new Date(time_start), $lte: new Date(time_end)}})
-  }
+  time_end = time_end ? new Date(decodeURIComponent(time_end)) : new Date()
+  const timestamp = {
+    $lte: time_end
+  } as any
 
-  let result: any = await LogModel.aggregate([
-    { 
-      "$facet": { 
-        "totalData": [
-          { 
-            "$match": match
-          }, 
-          { 
-            "$skip": +skip
-          }, 
-          { 
-            "$limit": +limit
-          }
-        ],     
-        "totalResult": [ { 
-          "$match": match
-        }, { "$count": "count" }]
-      }
-    } 
-  ])
-  return result
+  if (time_start) {
+    timestamp.$gte = new Date(decodeURIComponent(time_start))
+  }
+  
+  match.$and.push(timestamp)
+  
+  try {
+    const [data, count] = await Promise.all([
+      LogModel.find(match).skip(+skip).limit(+limit),
+      LogModel.countDocuments(match)
+    ])
+
+    return {
+      totalResult: data,
+      totalCount: count
+    } as any
+  } catch(err) {
+    throw new Error(err.message)
+  }
 };
 
 
-const saveLog = ({message, timestamp}: any) => {
-  LogModel.create({
-    message,
-    timestamp,
-    createdAt: new Date(),
-    level: 'INFO'
-  })
-}
-
-
-export { queryLogs, saveLog };
+export { queryLogs };

@@ -39,33 +39,5 @@ export const ErrorCodes: { [key: string]: CustomError } = {
   BAD_REQUEST: {
     CODE: 'BAD_REQUEST',
     MESSAGE: 'Bad request',
-  },
-  TURN_NOT_FOUND: {
-    CODE: 'TURN_NOT_FOUND',
-    MESSAGE: 'Cannot find corresponding turn with the SO number',
-  },
-  TURN_LOG_NOT_FOUND: {
-    CODE: 'TURN_LOG_NOT_FOUND',
-    MESSAGE: 'Cannot find corresponding turn logs with the SO number',
-  },
-  TURN_ALREADY_PLAYED: {
-    CODE: 'TURN_ALREADY_PLAYED',
-    MESSAGE: 'This turn is already played',
-  },
-  TURN_HAS_NOT_BEEN_PLAYED: {
-    CODE: 'TURN_HAS_NOT_BEEN_PLAYED',
-    MESSAGE: 'This turn has not been played',
-  },
-  GIFT_ALREADY_CLAIMED: {
-    CODE: 'GIFT_ALREADY_CLAIMED',
-    MESSAGE: 'This turn was finished and claimed',
-  },
-  TURN_EXPIRED: {
-    CODE: 'TURN_EXPIRED',
-    MESSAGE: 'This turn is expired',
-  },
-  REWARD_OUT_OF_STOCK: {
-    CODE: 'REWARD_OUT_OF_STOCK',
-    MESSAGE: `Don't have enough rewards in the event`,
-  },
+  }
 };
