@@ -18,7 +18,6 @@ export default interface Log extends Document {
   message: string;
   meta: any,
   timestamp?: Date;
-  createdAt?: Date;
 }
 
 const schema = new Schema(
@@ -32,10 +31,13 @@ const schema = new Schema(
       type: Schema.Types.String,
       default: ''
     },
+    service: {
+      type: Schema.Types.String,
+      default: ''
+    },
     timestamp: {
       type: Date,
-      required: true,
-      select: false,
+      required: true
     },
     meta: {
       type: Schema.Types.Mixed,

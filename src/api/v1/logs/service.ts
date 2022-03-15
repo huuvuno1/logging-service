@@ -18,7 +18,7 @@ const queryLogs = async (data: any) => {
   const timestamp = {} as any
   time_end && (timestamp.$lte = new Date(+time_end))
   time_start && (timestamp.$gte = new Date(+time_start))
-  Object.keys(timestamp).length && match.$and.push(timestamp)
+  Object.keys(timestamp).length && match.$and.push({ timestamp })
 
   match.$and.length || (delete match.$and)
   
