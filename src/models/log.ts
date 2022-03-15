@@ -16,6 +16,7 @@ export enum LogLevel {
 export default interface Log extends Document {
   level: string;
   message: string;
+  service: string;
   meta: any,
   timestamp?: Date;
 }

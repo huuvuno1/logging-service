@@ -1,4 +1,5 @@
-import Log, { LogModel } from "../../../models/log"
+import Log, { LogModel } from "../../../models/log";
+import { DocumentDefinition } from "mongoose";
 
 const queryLogs = async (data: any) => {
   let {q: keyword = '', limit = 20, page = 1, service = '', level = '', time_start, time_end} = data
@@ -32,6 +33,15 @@ const queryLogs = async (data: any) => {
     totalCount: count
   } as any
 };
+
+//WRITE LOGS
+export async function createLog(input: DocumentDefinition<Log>) {
+  try {
+    return await LogModel.create(input);
+  } catch (error) {
+    throw new Error(error);
+  }
+}
 
 
 export { queryLogs };
