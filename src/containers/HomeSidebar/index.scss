@@ -1,0 +1,32 @@
+.sidebar {
+    width: 200px;
+    height: 100vh;
+    border-right: 1px solid gray;
+    background-color: #115671;
+
+    // logo header component
+    .logo {
+        display: flex;
+        align-items: center;
+        padding: 10px 6px 13px;
+        color: #f1fafb;
+        text-decoration: none;
+        user-select: none;
+
+        h1 {
+            color: #f1fafb;
+            font-size: 24px;
+        }
+
+        img {
+            height: 40px;
+        }
+    }
+
+
+    // menu container
+    .menu {
+        // menu item component
+        
+    }
+}

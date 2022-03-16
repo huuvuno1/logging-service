@@ -1,0 +1,33 @@
+.menu__item {
+    display: flex;
+    align-items: center;
+    padding: 12px 8px;
+    color: var(--menu-item-color);
+    cursor: pointer;
+    text-decoration: none;
+
+    &:hover {
+        background-color: rgb(46, 139, 179);
+    }
+
+    .menu__item--icon {
+        margin-right: 10px;
+
+        i {
+            font-size: 25px;
+        }
+    }
+}
+
+.menu__item.selected {
+    background-color: #1b7ba4;
+}
+
+.spin_arround {
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

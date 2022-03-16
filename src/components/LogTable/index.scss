@@ -1,0 +1,59 @@
+
+.log__list {
+    & {
+        margin-top: 20px;
+        width: 100%;
+        border-collapse: collapse;
+    }
+    thead tr {
+        border-bottom: 1px solid #1b7ba4;
+    }
+
+    tr {
+        // border-bottom: 1px solid #b2d3d6;
+    }
+
+    tr:nth-child(even){background-color: #f6faf0;}
+
+    th, td {
+        padding: 10px;
+    }
+
+    .log__message {
+        width: 400px;
+    }
+
+    .log__list--header {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+
+        h3 {
+            font-size: 18px;
+            margin-right: 5px;
+        }
+
+        i {
+            margin-top: 2px;
+        }
+    }
+
+    .log__level {
+        width: 120px;
+    }
+    .log__timestamp, .log__service {
+        width: 250px;
+    }
+
+    .ERROR, .FATAL {
+        color: red;
+    }
+
+    .WARN {
+        color: rgb(255, 208, 0);
+    }
+
+    .INFO, .DEBUG, .TRACE  {
+        color: green;
+    }
+}

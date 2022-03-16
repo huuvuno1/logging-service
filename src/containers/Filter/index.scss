@@ -1,0 +1,20 @@
+.filter {
+
+    .filter__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 13px 10px;
+    }
+
+    // container search box
+    .filter__search-box {
+        display: flex;
+        justify-content: space-between;
+        padding: 15px 12px;
+
+        .filter__search-box__input {
+            flex-grow: 1;
+        }
+    }
+}

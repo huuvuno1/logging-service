@@ -1,0 +1,18 @@
+.log__fields--item {
+    & {
+        padding: 12px 7px 12px 15px;
+        color: #626768;
+        cursor: pointer;
+    }
+
+    &:hover {
+        background-color: rgb(223, 216, 206);
+    }
+
+    i {
+        margin-top: 2px;
+        font-size: 12px;
+        font-weight: bold;
+        margin-right: 15px;
+    }
+}

@@ -1,0 +1,22 @@
+.filter__search-box__item {
+    margin-bottom: 15px;
+    position: relative;
+    
+    * {
+        font-size: 16px;
+    }
+
+    .decor_placeholder {
+        position: absolute;
+        left: 10px;
+        top: 10px;
+    }
+
+    .filter_input {
+        width: 100%;
+        padding: 10px 15px 10px 40px;
+        border-radius: 5px;
+        outline: none;
+        border: 1px solid #b2d3d6;
+    }
+}
