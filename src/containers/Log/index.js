@@ -1,5 +1,5 @@
 import React from 'react';
-import LogContent from '../LogContent';
+import LogContent from '../LogTable';
 import LogSidebar from '../LogSidebar';
 import './index.scss'
 

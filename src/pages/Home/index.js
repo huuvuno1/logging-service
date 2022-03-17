@@ -5,7 +5,7 @@ import HomeSidebar from '../../containers/HomeSidebar';
 import './index.scss'
 import Discover from '../../containers/Discover';
 import Chart from '../../containers/Chart';
-import Management from '../../containers/Management';
+import Management from '../Management';
 
 function Home(props) {
     return (

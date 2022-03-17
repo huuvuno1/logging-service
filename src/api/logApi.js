@@ -1,9 +1,13 @@
 import axiosClient from "./axiosClient";
 
 const logApi = {
-    filter: (keyword, ) => {
-        const url = '/v1/auth/login';
-        return axiosClient.post(url, { username, password });
+    filter: async (params) => {
+        const query = Object.keys(params || {}).reduce((prev, curr) => {
+            return prev + (params[curr] ? `&${curr}=${params[curr]}` : '')
+        }, '?')
+
+        const url = 'http://localhost:8081/v1/logs' + query;
+        return axiosClient.get(url);
     }
 };
 

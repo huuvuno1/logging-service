@@ -35,7 +35,7 @@ function LogSidebar(props) {
 
 
   return (
-      <div className="log__sidebar">
+    <div className="log__sidebar">
       <h1 className="log__sidebar--header">
         Available Fields
       </h1>

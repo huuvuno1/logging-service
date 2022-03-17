@@ -5,6 +5,12 @@
         align-items: center;
         justify-content: space-between;
         padding: 13px 10px;
+
+        .filter__head--count {
+            color: red;
+            font-weight: bold;
+            font-size: 18px;
+        }
     }
 
     // container search box

@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.scss'
 
-function LogTable(props) {
+function Table(props) {
   const { data } = props
 
   return (
@@ -59,4 +59,4 @@ function LogTable(props) {
   );
 }
 
-export default LogTable;
+export default Table;
