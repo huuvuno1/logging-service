@@ -15,10 +15,15 @@ const logsSlice = createSlice({
     name: KEY,
     initialState: {
         value: [],
+        currentPage: 1,
+        totalFound: 0
     },
     reducers: {
         change: (state, action) => {
-            state.value = action.payload;
+            const {totalResult, totalFound, currentPage} = action.payload
+            totalResult && (state.value = totalResult);
+            totalFound && (state.totalFound = totalFound);
+            currentPage && (state.currentPage = currentPage);
         },
     },
     extraReducers: {},

@@ -2,4 +2,15 @@
     padding: 15px;
     flex-grow: 1;
 
+    .log__overview {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .log__results--count {
+        color: red;
+        font-weight: bold;
+        font-size: 18px;
+    }
 }

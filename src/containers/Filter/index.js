@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import logApi from '../../api/logApi';
 import InputFilter from '../../components/InputFilter';
 import PickTimestamp from '../../components/PickTimestamp';
@@ -13,6 +13,8 @@ function Filter(props) {
     const [ timeStart, setTimeStart ] = useState(0)
     const [ timeEnd, setTimeEnd ] = useState(0)
     const [ search, setSearch ] = useState([])
+    const currentPage = useSelector(state => state.logs.currentPage)
+    const totalFound = useSelector(state => state.logs.totalFound)
 
     useEffect(() => {
       setSearch([
@@ -44,11 +46,16 @@ function Filter(props) {
       const data = await logApi.filter({
         time_end: timeEnd,
         time_start: timeStart,
-        ...inputSearch
+        ...inputSearch,
+        page: currentPage
       })
 
       setTotalRecord(data.data.totalCount)
-      dispatch(change(data.data.totalResult))
+      dispatch(change({
+        totalResult: data.data.totalResult,
+        totalFound: data.data.totalCount,
+        currentPage: currentPage
+      }))
     }
 
     useEffect(handleQuery)
@@ -78,7 +85,7 @@ function Filter(props) {
     return (
         <div className="filter">
         <div className="filter__header">
-          <div className="filter__head--count">
+          <div className="filter__head--count" style={{visibility: 'hidden'}}>
             { totalRecord } records
           </div>
           <div className="filter__header--time">
