@@ -1,4 +1,5 @@
-import React from 'react';
+import { debounce } from 'lodash';
+import React, { useRef } from 'react';
 import './index.scss'
 
 function InputFilter(props) {
@@ -12,7 +13,7 @@ function InputFilter(props) {
       <input type="text" 
         className="filter_input" 
         placeholder={ placeholder } 
-        onChange={(e) => onChange(e, name)}
+        onChange={(e) => onChange(e.target.value, name)}
       />
     </div>
   );

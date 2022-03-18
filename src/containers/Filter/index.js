@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { debounce } from 'lodash'
 import logApi from '../../api/logApi';
 import InputFilter from '../../components/InputFilter';
 import PickTimestamp from '../../components/PickTimestamp';
@@ -38,6 +39,13 @@ function Filter(props) {
 
 
     const handleQuery = async () => {
+      /*
+        inputSearch: {
+          message: 'xxx',
+          service: 'xxx',
+          level: 'xxx'
+        }
+      */
       const inputSearch = search.reduce((prev, curr) => {
         prev[curr.name] = curr.value
         return prev
@@ -58,7 +66,7 @@ function Filter(props) {
       }))
     }
 
-    useEffect(handleQuery)
+    useEffect(handleQuery, [timeStart, timeEnd, search, currentPage])
 
     const handleTimestampChange = (e, id) => {
       const timestamp = new Date(e.target.value).getTime()
@@ -69,13 +77,18 @@ function Filter(props) {
       }
     }
 
-    const handleSearchChange = (e, name) => {
+    const debounceTextInput = useCallback(debounce((search) => {
+      setSearch([...search])
+    }, 300), [])
+
+    const handleSearchChange = (value, name) => {
       const data = search.map(item => {
         if (item.name === name)
-          item.value = e.target.value
+          item.value = value
         return item
       })
-      setSearch([...data])
+
+      debounceTextInput(data)
     }
 
     const refreshHandle = () => {

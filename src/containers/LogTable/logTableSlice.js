@@ -22,7 +22,7 @@ const logsSlice = createSlice({
         change: (state, action) => {
             const {totalResult, totalFound, currentPage} = action.payload
             totalResult && (state.value = totalResult);
-            totalFound && (state.totalFound = totalFound);
+            (totalFound || totalFound === 0) && (state.totalFound = totalFound);
             currentPage && (state.currentPage = currentPage);
         },
     },
