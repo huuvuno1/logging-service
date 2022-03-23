@@ -16,6 +16,18 @@ const getLogs = async (request: RequestWithUser, response: Response, next: NextF
   }
 };
 
+const getOverview = async (request: RequestWithUser, response: Response) => {
+  try {
+    const data = await LogService.getOverview();
+    response
+    .status(200)
+    .send(fmt.formatResponse(data, Date.now() - request.startTime, 'OK', 1));
+  }
+  catch(err) {
+    throw new HttpException(500, err.message, "")
+  }
+}
+
 //POST
 export async function createLog(req: RequestWithUser, res: Response) {
   try {
@@ -28,4 +40,5 @@ export async function createLog(req: RequestWithUser, res: Response) {
   }
 }
 
-export { getLogs };
+
+export { getLogs, getOverview };

@@ -34,6 +34,19 @@ const queryLogs = async (data: any) => {
   } as any
 };
 
+const getOverview = async () => {
+
+  const [totalRecord, info, error, warn] = await Promise.all([
+    LogModel.countDocuments(),
+    LogModel.countDocuments({level: { $regex: "INFO|DEBUG|TRACE", $options: 'gi' }}),
+    LogModel.countDocuments({level: { $regex: "FATAL|ERROR", $options: 'gi' }}),
+    LogModel.countDocuments({level: { $regex: "WARN", $options: 'gi' }})
+  ])
+
+  return { totalRecord, info, error, warn }
+}
+
+
 //WRITE LOGS
 export async function createLog(input: DocumentDefinition<Log>) {
   try {
@@ -44,4 +57,4 @@ export async function createLog(input: DocumentDefinition<Log>) {
 }
 
 
-export { queryLogs };
+export { queryLogs, getOverview };
