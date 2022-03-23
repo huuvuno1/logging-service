@@ -10,6 +10,18 @@ services:
       - 27017:27017
     networks:
       - logging-service-2022
+  
+  rabbitmq:
+    image: rabbitmq:3.8-management-alpine
+    container_name: 'rabbitmq-log'
+    ports:
+        - 5673:5672
+        - 15673:15672
+    volumes:
+        - ./rabbit/data/:/var/lib/rabbitmq/
+        - ./rabbit/log/:/var/log/rabbitmq
+    networks:
+        - logging-service-2022
 
 networks:
   logging-service-2022:

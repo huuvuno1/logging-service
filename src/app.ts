@@ -12,6 +12,7 @@ import { APP_CONSTANTS } from './utils/constants';
 import logger, { errorLogging, requestLogging } from './logger';
 import config from './config';
 import { errorMiddleware } from './middlewares';
+import configRabbitMQ from './consumer/logConsumer';
 
 const app = express();
 
@@ -59,6 +60,7 @@ function initializeSwagger() {
 
 initializeSecurity();
 initializeMiddlewares();
+configRabbitMQ()
 app.use(APP_CONSTANTS.apiPrefix, routers);
 initializeErrorHandler();
 initializeSwagger();

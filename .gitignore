@@ -63,3 +63,6 @@ mongodb-log/journal
 
 
 frontend
+
+rabbit/data
+rabbit/log

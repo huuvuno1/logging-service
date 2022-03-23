@@ -31,4 +31,8 @@ export default {
     dbName: process.env.MONGODB_NAME,
   },
   redisHost: process.env.REDIS_HOST,
+  rabbitMQ: {
+    protocol: process.env.RABBITMQ_PROTOCOL,
+    host: process.env.RABBITMQ_HOST
+  }
 };

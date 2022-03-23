@@ -54,6 +54,8 @@
     "webpack-hot-middleware": "^2.25.1"
   },
   "dependencies": {
+    "@types/amqplib": "^0.8.2",
+    "amqplib": "^0.8.0",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.13.2",
     "compression": "^1.7.4",
