@@ -56,5 +56,9 @@ export async function createLog(input: DocumentDefinition<Log>) {
   }
 }
 
+const getListServices = async () => {
+  const data = await LogModel.find().distinct('service')
+  return data
+}
 
-export { queryLogs, getOverview };
+export { queryLogs, getOverview, getListServices };

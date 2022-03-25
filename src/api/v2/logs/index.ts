@@ -7,6 +7,5 @@ const router = Router();
 router.get('/', asyncRouteHandler(controller.getLogs));
 router.get('/services', asyncRouteHandler(controller.getListServices));
 router.get('/overview', asyncRouteHandler(controller.getOverview));
-router.post('/', asyncRouteHandler(controller.createLog));
 
 export default router;

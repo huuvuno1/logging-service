@@ -4,8 +4,7 @@ FROM node:16
 ADD . /logging-service
 
 # Install dependencies
-RUN cd /logging-service; \    
-    chmod +x ./wait-for-it.sh; \
+RUN cd /logging-service; \
     npm install;  \
     npm run build
 
@@ -13,4 +12,4 @@ RUN cd /logging-service; \
 EXPOSE 8081
 
 # Run our app.
-CMD ["node", ""]
+CMD ["NODE_PATH=./dist", "node", "dist/server.js"]

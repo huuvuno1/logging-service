@@ -16,8 +16,10 @@ async function configRabbitMQ() {
     })
     
     channel.consume('logs', msg => {
-        const data = JSON.parse(msg.content.toString())
-        createLog(data)
+        const data = JSON.parse(JSON.parse(msg.content.toString()))
+        const log =  {...data, timestamp: new Date(data.timestamp)}
+        console.log('receive log: ', log)
+        createLog(log)
     })
 }
 
