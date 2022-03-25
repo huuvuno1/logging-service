@@ -1,5 +1,4 @@
-import { debounce } from 'lodash';
-import React, { useRef } from 'react';
+import React from 'react';
 import './index.scss'
 
 function InputFilter(props) {

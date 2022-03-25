@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import logApi from '../../api/logApi';
+import logApi from '../../api/v1/logApi';
 
 const KEY = 'logs';
 

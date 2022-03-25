@@ -23,4 +23,27 @@
             flex-grow: 1;
         }
     }
+
+    .filter__select {
+        display: flex;
+        margin-bottom: 20px;
+
+        .filter__select--item {
+            width: 300px;
+            margin-left: 12px;
+        }
+    }
+
+    .flex {
+        display: flex;
+    }
+    .space-between {
+        justify-content: space-between;
+    }
+
+    .time__query {
+        font-size: 18px;
+        padding-right: 16px;
+        color: red;
+    }
 }

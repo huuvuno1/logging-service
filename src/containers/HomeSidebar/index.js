@@ -11,23 +11,21 @@ function Sidebar(props) {
         {
           to: '/',
           label: 'Discover',
-          icon: 'bx bxs-bar-chart-alt-2',
-          selected: true
+          icon: 'bx bxs-bar-chart-alt-2'
         },
         {
           to: '/chart',
           label: 'Chart',
-          icon: 'bx bx-scatter-chart',
-          selected: false
+          icon: 'bx bx-scatter-chart'
         },
         {
           to: '/management',
           label: 'Management',
-          icon: 'bx bxs-offer spin_arround',
-          selected: false
+          icon: 'bx bxs-offer spin_arround'
         }
       ])
     }, [])
+
 
     return (
       <div className="sidebar">
