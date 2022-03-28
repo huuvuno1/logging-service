@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import { connect, connection } from 'mongoose';
+import { connect, connection, mongo } from 'mongoose';
 import config from '../config';
 import logger from '../logger';
 
@@ -9,6 +9,7 @@ const mongodbProtocol = mongoDBConfig.protocol || 'mongodb';
 const userNamePwd = mongoDBConfig.username ? `${mongoDBConfig.username}:${mongoDBConfig.pasword}@` : '';
 
 let mongodbUrl = `${mongodbProtocol}://${userNamePwd}${mongoDBConfig.host}/${mongoDBConfig.dbName}`;
+
 
 if (mongoDBConfig.replicaSet) {
   mongodbUrl += `&replicaSet=${mongoDBConfig.replicaSet}`;

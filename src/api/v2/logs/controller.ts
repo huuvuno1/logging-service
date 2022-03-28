@@ -28,7 +28,7 @@ const getOverview = async (request: RequestWithUser, response: Response) => {
   }
 }
 
-const getListServices =async (request: RequestWithUser, response: Response) => {
+const getListServices = async (request: RequestWithUser, response: Response) => {
   try {
     const data = await LogService.getListServices();
     response
@@ -40,5 +40,17 @@ const getListServices =async (request: RequestWithUser, response: Response) => {
   }
 }
 
+const logTracking = async (request: RequestWithUser, response: Response) => {
+  try {
+    const data = await LogService.logTracking(request.query);
+    response
+    .status(200)
+    .send(fmt.formatResponse(data, Date.now() - request.startTime, 'OK', 1));
+  }
+  catch(err) {
+    throw new HttpException(500, err.message, "")
+  }
+}
 
-export { getLogs, getOverview, getListServices };
+
+export { getLogs, getOverview, getListServices, logTracking };

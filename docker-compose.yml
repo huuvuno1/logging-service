@@ -11,28 +11,28 @@ services:
     networks:
       - logging-service-2022
   
-  rabbitmq:
-    image: rabbitmq:3.8-management-alpine
-    container_name: 'rabbitmq-log'
-    ports:
-        - 5673:5672
-        - 15673:15672
-    volumes:
-        - ./rabbit/data/:/var/lib/rabbitmq/
-        - ./rabbit/log/:/var/log/rabbitmq
-    networks:
-        - logging-service-2022
+  # rabbitmq:
+  #   image: rabbitmq:3.8-management-alpine
+  #   container_name: 'rabbitmq-log'
+  #   ports:
+  #       - 5673:5672
+  #       - 15673:15672
+  #   volumes:
+  #       - ./rabbit/data/:/var/lib/rabbitmq/
+  #       - ./rabbit/log/:/var/log/rabbitmq
+  #   networks:
+  #       - logging-service-2022
 
-  elasticsearch:
-    container_name: es-container
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.11.0
-    environment:
-      - xpack.security.enabled=false
-      - "discovery.type=single-node"
-    networks:
-      - logging-service-2022
-    ports:
-      - 9200:9200
+  # elasticsearch:
+  #   container_name: es-container
+  #   image: docker.elastic.co/elasticsearch/elasticsearch:7.11.0
+  #   environment:
+  #     - xpack.security.enabled=false
+  #     - "discovery.type=single-node"
+  #   networks:
+  #     - logging-service-2022
+  #   ports:
+  #     - 9200:9200
 
 networks:
   logging-service-2022:

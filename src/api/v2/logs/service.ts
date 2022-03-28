@@ -25,7 +25,7 @@ const queryLogs = async (data: any) => {
             match: { 
               message: {
                 query: keyword,
-                fuzziness: "auto"
+                fuzziness: "AUTO"
               }
             }
           },
@@ -79,16 +79,62 @@ const getQueryLevel = (level: string) => ({
 })
 
 const getOverview = async () => {
-  const [totalRecord, info, error, warn] = await Promise.all([
-    LogModel.esCount(),
-    LogModel.esCount(getQueryLevel("INFO|DEBUG|TRACE")),
-    LogModel.esCount(getQueryLevel("FATAL|ERROR")),
-    LogModel.esCount(getQueryLevel("WARN")),
-  ])
+  const data: any = await LogModel.esSearch({
+    size: 0,
+    aggs: {
+      overview: {
+        terms: {
+          field: "level.keyword"
+        }
+      }
+    }
+  })
 
-  return { totalRecord: totalRecord.body.count, info: info.body.count, error: error.body.count, warn: warn.body.count }
+  return [ ...data.body.aggregations.overview.buckets ]
 }
 
+const logTracking = async (params: any) => {
+  let { time_start = (new Date().getTime() - 50000), time_end = new Date().getTime() } = params
+  time_start = +time_start
+  time_end = +time_end
+
+  const genQuery = (gte: number, lte: number) => {
+    return {
+      "size": 0,
+      "query": {
+        "bool": {
+          "must": [
+            {
+              "range": {
+                "timestamp": {
+                  "gte": gte,
+                  "lte": lte
+                }
+              }
+            }
+          ]
+        }
+      },
+      "aggs": {
+        "tracking": {
+          "terms": {
+            "field": "level.keyword"
+          }
+        }
+      }
+    }
+  }
+
+  const time_distance = Math.floor((time_end - time_start) / 7)
+
+  const data: any = await Promise.all(
+    Array.from({ length: 7 })
+      .map((v, index) => LogModel.esSearch(genQuery(time_start + (time_distance * (index - 1)), time_start + (time_distance * index))))
+  )
+
+  const result = data.map((value: any) => value.body.aggregations.tracking.buckets)
+  return result
+}
 
 const getListServices = async () => {
   const data = await LogModel.esSearch({
@@ -104,7 +150,7 @@ const getListServices = async () => {
   return data
 }
 
-export { queryLogs, getOverview, getListServices };
+export { queryLogs, getOverview, getListServices, logTracking };
 
 // query: keyword,
 // fuzziness: 'auto'

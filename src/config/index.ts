@@ -33,6 +33,8 @@ export default {
   redisHost: process.env.REDIS_HOST,
   rabbitMQ: {
     protocol: process.env.RABBITMQ_PROTOCOL,
-    host: process.env.RABBITMQ_HOST
+    host: process.env.RABBITMQ_HOST,
+    username: process.env.RABBITMQ_USERNAME,
+    password: process.env.RABBITMQ_PASSWORD
   }
 };

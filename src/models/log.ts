@@ -1,6 +1,7 @@
-import { Schema, model, Document } from 'mongoose';
+import { Schema, model, Document, startSession } from 'mongoose';
 import { any } from 'sequelize/types/lib/operators';
 import mongoosastic, { MongoosasticModel, MongoosasticDocument } from 'mongoosastic'
+import { Client } from '@elastic/elasticsearch'
 
 
 export const DOCUMENT_NAME = 'Log';
@@ -48,7 +49,8 @@ const schema = new Schema(
     },
     meta: {
       type: Schema.Types.Mixed,
-        required: false
+        required: false,
+        es_indexed: false,
     }
   },
   {
@@ -62,22 +64,8 @@ schema.index({
   name: 'log_message_index'
 })
 
-schema.plugin(mongoosastic)
+const esClient = new Client({ node: 'http://localhost:9200' })
+
+schema.plugin(mongoosastic, { esClient })
 
 export const LogModel = model<Log, MongoosasticModel<Log>>(DOCUMENT_NAME, schema, COLLECTION_NAME)
-
-/* 
- ___Run only once when you want to sync old data___
-
-var stream = LogModel.synchronize();
-var count = 0;
-var time = new Date()
-
-stream.on('data', (err, doc) => {
-  console.log(doc)
-  count++;
-});
-stream.on('close', () => console.log('indexed ' + count + ' documents!', 'time: ', time.toLocaleTimeString(), new Date().toLocaleTimeString()));
-stream.on('error', (err) => console.log(err));
-
-*/
