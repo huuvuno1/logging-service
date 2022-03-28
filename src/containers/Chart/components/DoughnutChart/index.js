@@ -6,35 +6,41 @@ import './index.scss'
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export default function DoughnutChart(props) {
-  const { totalRecord, error = 10, warn = 10, info = 10 } = props
+  const overview = (props.overview && props.overview.sort((a, b) => a.key > b.key)) || []
+  const values = overview.map(item => item.doc_count)
+  const labels = overview.map(item => item.key)
 
   const data = {
-    labels: ['ERROR, FATAL', 'WARN', 'INFO, DEBUG, TRACE'],
+    labels: labels,
     datasets: [
       {
-        label: '# of Votes',
-        data: [error, warn, info],
+        label: 'Logs',
+        data: values,
         backgroundColor: [
-          'red',
-          'orange',
-          'green',
+          '#6bf532',
+          '#6baf3f',
+          '#319300',
+          '#db2b2b',
+          '#e59e1d',
+          '#ef6f5e',
         ],
         borderColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)'
+          '#6bf532',
+          '#6baf3f',
+          '#319300',
+          '#db2b2b',
+          '#e59e1d',
+          '#ef6f5e',
         ],
         borderWidth: 1,
       },
     ],
   };
 
-  console.log("char", data)
-
 
   return (
     <>
-      <h1>Overview ~ {totalRecord} records </h1>
+      <h1>Overview ~ { values.reduce((acc, value) => acc + value, 0) } records </h1>
       <div className='doughnut__chart'>
         <Doughnut data={data}  />
       </div>

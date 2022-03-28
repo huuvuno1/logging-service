@@ -5,7 +5,7 @@ import LineChart from './components/LineChart';
 import './index.scss'
 
 function LogChart(props) {
-  const [overview, setOverview] = useState({})
+  const [overview, setOverview] = useState([])
 
   useEffect(() => {
     async function fetchData() {
@@ -18,7 +18,7 @@ function LogChart(props) {
 
   return (
     <div className='log__chart'>
-      <DoughnutChart {...overview} />
+      <DoughnutChart overview={overview} />
       <LineChart />
     </div>
   );
