@@ -1,12 +1,14 @@
 import axiosClient from "../axiosClient";
 
+const BASE_URL = 'https://logging-serivice-production.up.railway.app'
+
 const logApi = {
     filter: async (params) => {
         const query = Object.keys(params || {}).reduce((prev, curr) => {
             return prev + (params[curr] ? `&${curr}=${params[curr]}` : '')
         }, '?')
 
-        const url = 'http://localhost:8081/v1/logs' + query;
+        const url = `${BASE_URL}/v1/logs` + query;
         const data = await axiosClient.get(url);
         return {
             data: data.data.data,
@@ -14,11 +16,11 @@ const logApi = {
         }
     },
     getOverview: async () => {
-        const url = 'http://localhost:8081/v1/logs/overview'
+        const url = `${BASE_URL}/v1/logs/overview`
         return axiosClient.get(url)
     },
     fetchListService: async () => {
-        const url = 'http://localhost:8081/v1/logs/services'
+        const url = `${BASE_URL}/v1/logs/services`
         const response = await axiosClient.get(url)
         return response.data.data
     }

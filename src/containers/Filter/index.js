@@ -101,7 +101,7 @@ function Filter(props) {
             checkedChildren="api v2" 
             unCheckedChildren="api v1" 
             size='defalt'
-            defaultChecked={localStorage.getItem('api_version') === 'api_v2'}
+            defaultChecked={localStorage.getItem('api_version') !== 'api_v1'}
             />
           </div>
           <div className="filter__header--time">
